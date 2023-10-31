@@ -4,17 +4,13 @@ import Login from './components/Login';
 import { useState } from 'react';
 import { createContext } from 'react';
 
-
-
-
 export const dataContext = createContext()
 
 function App() {
 
-
   const [data , setData] = useState({
-    username: "pantea",
-    password : "dev123456789" ,
+    username: "",
+    password : "" ,
 });
 
   return (

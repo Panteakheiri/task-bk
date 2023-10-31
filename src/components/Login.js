@@ -8,6 +8,7 @@ import { postData } from './HttpRequest';
 import Styles from "./Login.module.css"
 import { useContext } from 'react';
 import {dataContext} from "../App"
+import Cookies from 'js-cookie';
 const Login = () => {
 
     const {data , setData} = useContext(dataContext)
@@ -64,7 +65,7 @@ const Login = () => {
             })
         }
         const response = await postData("auth/login" , data)
-            document.cookie = `token = ${response.token} , max-age =${24 * 60 * 60} ; path=Auth/Login`
+            Cookies.set('token' , response.token,{expires :1})
             window.location.assign("/")
     }
 
@@ -76,16 +77,16 @@ const Login = () => {
 
   return (
     
-    <Box className={Styles.container} dir='rtl'>
+    <Box className={Styles.container} >
         <form className={Styles.form} onSubmit={submitHandler}>
             <div>
-            <TextField dir='rtl'
+            <TextField
             name='username' label="نام کاربری" variant="outlined" value={data.username} onChange={changeHandler} onFocus={focusHandler}/>
             {errors.username && touched.username && <span>{errors.username}</span>}
             </div>
             <br />
             <div>
-            <TextField dir='rtl'
+            <TextField
              name='password' label="رمز عبور" variant="outlined" value={data.password} onChange={changeHandler} onFocus={focusHandler}/>
              {errors.password && touched.password && <span>{errors.password}</span>}
             </div>

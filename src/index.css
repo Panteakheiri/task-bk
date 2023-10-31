@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iranSans";
-  src: url("./fonts/IRANSans.woff2") format("woff2")
+  src: url("../public/fonts/IRANSans.woff2") format("woff")
   }
 body {
   font-family: "iranSans";

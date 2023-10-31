@@ -2,7 +2,7 @@ import React, { useEffect, useState , useMemo } from 'react'
 import {  Autocomplete } from "@mui/material";
 import { TextField , Box} from "@mui/material";
 import Styles from "./Home.module.css"
-
+import Cookies from 'js-cookie';
 
 
 const Home = () => {
@@ -13,15 +13,19 @@ const Home = () => {
   const [selectedCity, setSelectedCity] = useState(null);
 
   useEffect(() => {
-    // Fetch province and city lists from REST APIs
+    const token = Cookies.get('token');
+    if (!token) {
+      window.location.href = "/login";
+      return;
+    }
     Promise.all([
       fetch("http://rezayari.ir:5050/CityAndProvince/GetProvince", {
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTg3MzgyODcsImlzcyI6InJlemF5YXJpLmlyIiwiYXVkIjoicmV6YXlhcmkuaXIifQ.NGrtQZ4vako1lZlAbbU2yjlX9q-mHfe1C6yCyTghYB8'}
+          Authorization: 'Bearer ' + token}
       }).then(response => response.json()),
       fetch("http://rezayari.ir:5050/CityAndProvince/GetCity" , {
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTg3MzgyODcsImlzcyI6InJlemF5YXJpLmlyIiwiYXVkIjoicmV6YXlhcmkuaXIifQ.NGrtQZ4vako1lZlAbbU2yjlX9q-mHfe1C6yCyTghYB8'}
+          Authorization: 'Bearer ' + token}
       }).then(response => response.json())
     ])
       .then(([provinceData, cityData]) => {

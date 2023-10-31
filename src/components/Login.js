@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState , useEffect } from 'react';
-import {  Button, TextField } from "@mui/material";
+import {  Box, Button, TextField } from "@mui/material";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import validate from './validate';
@@ -76,7 +76,7 @@ const Login = () => {
 
   return (
     
-    <div className={Styles.container}>
+    <Box className={Styles.container} dir='rtl'>
         <form className={Styles.form} onSubmit={submitHandler}>
             <div>
             <TextField dir='rtl'
@@ -93,7 +93,7 @@ const Login = () => {
             <Button sx={{width : 220 , height : 50}} type='submit' variant="contained">ورود</Button>
         </form>
         <ToastContainer />
-    </div>
+    </Box>
   )
 }
 

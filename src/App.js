@@ -4,11 +4,13 @@ import Login from './components/Login';
 import { useState } from 'react';
 import { createContext } from 'react';
 
+
+
+
 export const dataContext = createContext()
 
 function App() {
 
-  
 
   const [data , setData] = useState({
     username: "pantea",
@@ -17,7 +19,6 @@ function App() {
 
   return (
     <div className="App">
-      
       <dataContext.Provider value={{data , setData}}>
       <Routes>
         <Route path='/' element={<Home />}/>

@@ -1,11 +1,12 @@
 .container {
     margin-top: 100px;
-    margin-right: 650px;
-    
+    margin-right: 600px;
 }
 .form {
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
-
 
 

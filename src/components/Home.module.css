@@ -1,7 +1,8 @@
 .container {
     display: flex;
+    flex-direction: column;
     margin-top: 100px;
-    margin-right: 450px;
+    margin-right: 600px;
     gap: 24px;
-    font-family: "iranSans",sans-serif;
+    font-family: "iranSans";
 }

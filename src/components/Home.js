@@ -65,7 +65,6 @@ const Home = () => {
     <Box>
         
         <Box className={Styles.container}>
-          
         <Autocomplete
         disablePortal
         id="combo-box-demo"
@@ -76,7 +75,6 @@ const Home = () => {
         sx={{ width: 300}}
         renderInput={(params) => <TextField {...params} label="لیست استان ها" />}
         />
-
         <Autocomplete
         disablePortal
         id="combo-box-demo"
@@ -87,10 +85,9 @@ const Home = () => {
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="لیست شهرها" />}
         />
-        
         </Box>
     </Box>
   )
 }
 
-export default Home
+export default Home;

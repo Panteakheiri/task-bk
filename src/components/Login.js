@@ -11,9 +11,11 @@ import {dataContext} from "../App"
 import Cookies from 'js-cookie';
 const Login = () => {
 
+
     const {data , setData} = useContext(dataContext)
     
-    
+    // for login notifications 
+
     const notify = (text , type) => {
         if(type === "success") {
             toast.success(text, {
@@ -39,8 +41,6 @@ const Login = () => {
                 });
         }
         };
-    
-    
 
     const changeHandler = event => {
             setData({...data,[event.target.name] : event.target.value} )
@@ -80,18 +80,22 @@ const Login = () => {
     <Box className={Styles.container} >
         <form className={Styles.form} onSubmit={submitHandler}>
             <div>
-            <TextField
-            name='username' label="نام کاربری" variant="outlined" value={data.username} onChange={changeHandler} onFocus={focusHandler}/>
-            {errors.username && touched.username && <span>{errors.username}</span>}
+            <TextField sx={{fontFamily : 'iranSans' , width : 300}} 
+            error={!!touched.username && !!errors.username}
+            helperText={touched.username && errors.usename}
+            name='username' label="نام کاربری" variant="outlined"
+            value={data.username} onChange={changeHandler} onFocus={focusHandler}/>
             </div>
-            <br />
+
             <div>
-            <TextField
-             name='password' label="رمز عبور" variant="outlined" value={data.password} onChange={changeHandler} onFocus={focusHandler}/>
-             {errors.password && touched.password && <span>{errors.password}</span>}
+            <TextField sx={{fontFamily : "iranSans" , width : 300}} type='password'
+            error={!!touched.password && !!errors.password}
+            helperText={touched.password && errors.password}
+            name='password' label="رمز عبور" variant="outlined"
+            value={data.password} onChange={changeHandler} onFocus={focusHandler}/>
             </div>
-            <br />
-            <Button sx={{width : 220 , height : 50}} type='submit' variant="contained">ورود</Button>
+
+            <Button sx={{width : 300 , height : 50 , fontFamily : "iranSans" , fontSize : 20}} type='submit' variant="contained">ورود</Button>
         </form>
         <ToastContainer />
     </Box>

@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     const token = Cookies.get('token');
-    if (!token) {
+    if (!token || token === undefined || token === null || token === "" || token === "undefined") {
       window.location.href = "/login";
       return;
     }

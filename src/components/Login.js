@@ -54,17 +54,26 @@ const Login = () => {
     }
 
     const submitHandler = async (event) => {
-        event.preventDefault()
-        if(!Object.keys(errors).length) {
-            notify("you loged in successfully" , "success")
-        } else {
-            notify("invalid data!" , "error")
+        event.preventDefault()            
+        if(Object.keys(errors).length) {
+            notify("نام کاربری و یا گذرواژه نا معتبر" , "error")
             setTouched({
                 username:  true,
                 password :  true ,
             })
         }
         const response = await postData("auth/login" , data)
+        console.log("response is : " , response.token)
+            if (response.token === undefined) {
+                notify("نام کاربری و یا گذرواژه نا معتبر" , "error")
+                setTouched({
+                    username:  true,
+                    password :  true ,
+                })
+                return
+            }
+            notify("با موفقیت وارد شدید" , "success")
+            await new Promise(r => setTimeout(r, 2000));
             Cookies.set('token' , response.token,{expires :1})
             window.location.assign("/")
     }

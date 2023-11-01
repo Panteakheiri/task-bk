@@ -9,6 +9,7 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import {prefixer} from 'stylis';
 import {CacheProvider} from '@emotion/react';
 import createCache from '@emotion/cache';
+import { CssBaseline } from '@mui/material';
 
 const cacheRtl = createCache({
   key: 'muirtl',
@@ -23,6 +24,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <CacheProvider value={cacheRtl}>
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <BrowserRouter>
       <App/>
       </BrowserRouter>

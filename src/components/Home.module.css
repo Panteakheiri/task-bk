@@ -1,8 +1,8 @@
 .container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     margin-top: 100px;
-    margin-right: 600px;
+    align-items: center;
     gap: 24px;
     font-family: "iranSans";
     font-display: swap;
